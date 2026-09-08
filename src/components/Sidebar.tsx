@@ -4,15 +4,12 @@ import {
   LayoutDashboard,
   AlertOctagon,
   FolderGit2,
-  GitCompare,
   TrendingUp,
   ClockAlert,
-  CopyCheck,
   MapPin,
   BotMessageSquare,
   ShieldCheck,
   FileSpreadsheet,
-  FileCheck2,
   History,
   BarChart3,
   PieChart,
@@ -56,14 +53,6 @@ export const Sidebar: React.FC = () => {
       section: 'Core Monitoring',
     },
     {
-      id: 'reality',
-      label: 'Financial vs Physical Reality',
-      icon: GitCompare,
-      badge: 'Engine',
-      badgeColor: 'bg-amber-500/20 text-amber-300 border border-amber-500/40',
-      section: 'Risk & Anomaly Engines',
-    },
-    {
       id: 'cost-anomaly',
       label: 'Cost Anomaly Detection',
       icon: TrendingUp,
@@ -73,14 +62,6 @@ export const Sidebar: React.FC = () => {
       id: 'predictions',
       label: 'Predictive Delay Modeling',
       icon: ClockAlert,
-      section: 'Risk & Anomaly Engines',
-    },
-    {
-      id: 'duplicates',
-      label: 'Duplicate / Overlap Radar',
-      icon: CopyCheck,
-      badge: 'NLP + GIS',
-      badgeColor: 'bg-blue-500/20 text-blue-300 border border-blue-500/40',
       section: 'Risk & Anomaly Engines',
     },
     {
@@ -105,12 +86,6 @@ export const Sidebar: React.FC = () => {
       icon: PieChart,
       badge: 'Recharts',
       badgeColor: 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40',
-      section: 'Decision Support',
-    },
-    {
-      id: 'reports',
-      label: 'AI Investigation Dossiers',
-      icon: FileCheck2,
       section: 'Decision Support',
     },
     {
@@ -258,7 +233,7 @@ export const Sidebar: React.FC = () => {
         <div className="flex items-center justify-between font-mono text-[10px]">
           <span className="flex items-center gap-1.5 text-emerald-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-            AI Sentinel Active
+            AI Drishti Active
           </span>
           <span className="opacity-60">ISO/IEC 27001</span>
         </div>

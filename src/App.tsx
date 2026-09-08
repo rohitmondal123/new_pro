@@ -6,15 +6,14 @@ import { Sidebar } from './components/Sidebar';
 import { NotificationDrawer } from './components/NotificationDrawer';
 import { LoginView } from './components/LoginView';
 import { FloatingAiRobot } from './components/FloatingAiRobot';
+import { HighRiskNotificationPopup } from './components/HighRiskNotificationPopup';
 
 // Views
 import { DashboardView } from './components/views/DashboardView';
 import { InvestigationQueueView } from './components/views/InvestigationQueueView';
 import { ProjectDetailView } from './components/views/ProjectDetailView';
 import { ProjectsView } from './components/views/ProjectsView';
-import { FinancialPhysicalRealityView } from './components/views/FinancialPhysicalRealityView';
 import { CostAnomalyView } from './components/views/CostAnomalyView';
-import { DuplicateRadarView } from './components/views/DuplicateRadarView';
 import { GeospatialMapView } from './components/views/GeospatialMapView';
 import { DelayPredictionsView } from './components/views/DelayPredictionsView';
 import { AiAssistantView } from './components/views/AiAssistantView';
@@ -23,7 +22,6 @@ import { ComplianceView } from './components/views/ComplianceView';
 import { DataQualityView } from './components/views/DataQualityView';
 import { AuditTrailView } from './components/views/AuditTrailView';
 import { AnalyticsView } from './components/views/AnalyticsView';
-import { ReportsView } from './components/views/ReportsView';
 
 const MainLayout: React.FC = () => {
   const { isLoggedIn, activeRoute, selectedProjectId } = useAuth();
@@ -43,12 +41,8 @@ const MainLayout: React.FC = () => {
         return <ProjectDetailView projectId={selectedProjectId || 'MPL-1024'} />;
       case 'projects':
         return <ProjectsView />;
-      case 'reality':
-        return <FinancialPhysicalRealityView />;
       case 'cost-anomaly':
         return <CostAnomalyView />;
-      case 'duplicates':
-        return <DuplicateRadarView />;
       case 'map':
         return <GeospatialMapView />;
       case 'predictions':
@@ -65,8 +59,6 @@ const MainLayout: React.FC = () => {
         return <AuditTrailView />;
       case 'analytics':
         return <AnalyticsView />;
-      case 'reports':
-        return <ReportsView />;
       default:
         return <DashboardView />;
     }
@@ -91,6 +83,9 @@ const MainLayout: React.FC = () => {
         isOpen={notificationOpen}
         onClose={() => setNotificationOpen(false)}
       />
+
+      {/* High-Risk Project Alert Pop-up */}
+      <HighRiskNotificationPopup autoShow={true} />
 
       {/* Floating Autonomous AI Robot Worker */}
       <FloatingAiRobot />

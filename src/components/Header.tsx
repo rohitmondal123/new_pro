@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth, ROLE_PROFILES } from '../context/AuthContext';
 import { useTheme, THEME_OPTIONS, ThemeId } from '../context/ThemeContext';
 import { UserRole } from '../types/mplads';
+import { IndianFlag } from './IndianFlag';
 import {
   ShieldAlert,
   Bell,
@@ -12,6 +13,7 @@ import {
   LogOut,
   Palette,
   Check,
+  Flame,
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -69,6 +71,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNotifications, unreadCount
     globalSearch,
     setGlobalSearch,
     logout,
+    triggerRiskAlert,
   } = useAuth();
 
   const { currentTheme, setTheme, themeConfig } = useTheme();
@@ -149,21 +152,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNotifications, unreadCount
             onClick={() => setActiveRoute('dashboard')}
             className="flex items-center gap-3 cursor-pointer group"
           >
-            <div
-              className="w-10 h-10 rounded-xl text-white flex items-center justify-center shadow-xs border relative overflow-hidden transition-transform group-hover:scale-102"
-              style={{
-                backgroundColor: 'var(--app-brand-logo-bg)',
-                borderColor: 'var(--app-sidebar-border)',
-              }}
-            >
-              {/* Subtle tricolor corner accent */}
-              <div className="absolute top-0 left-0 w-full h-[2.5px] bg-gradient-to-r from-[#FF671F] via-white to-[#138808]" />
-              <ShieldAlert className="w-5.5 h-5.5" style={{ color: 'var(--app-brand-highlight)' }} />
+            <div className="shrink-0 transition-transform group-hover:scale-105">
+              <IndianFlag className="w-10 h-7 rounded-xs shadow-md border border-slate-300/80 dark:border-slate-700" />
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-extrabold tracking-tight text-lg theme-text font-sans">
-                  MPLADS <span style={{ color: 'var(--app-brand-highlight)' }}>SENTINEL</span>
+                  TEAM <span style={{ color: 'var(--app-brand-highlight)' }}>DRISHTI</span>
                 </span>
                 <span
                   className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full border flex items-center gap-1"
@@ -318,6 +313,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenNotifications, unreadCount
               </div>
             )}
           </div>
+
+          {/* Trigger High Risk Alert button */}
+          <button
+            type="button"
+            onClick={triggerRiskAlert}
+            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-rose-300 dark:border-rose-900/60 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-xs font-bold transition-all cursor-pointer shadow-2xs"
+            title="Trigger High-Risk Project Alert Pop-up"
+          >
+            <Flame className="w-3.5 h-3.5 text-rose-500 animate-pulse" />
+            <span className="text-[11px] font-mono">Risk Alert</span>
+          </button>
 
           {/* Notifications */}
           <button

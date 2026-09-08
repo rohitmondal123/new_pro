@@ -31,7 +31,7 @@ export const AiAssistantView: React.FC = () => {
     {
       id: 'init-1',
       sender: 'assistant',
-      text: `Hello, I am your MPLADS Sentinel AI Assistant, grounded in real-time project risk data, cost anomaly models, and spatial records.
+      text: `Hello, I am your Team Drishti AI Assistant, grounded in real-time project risk data, cost anomaly models, and spatial records.
 
 How can I assist you with project scrutiny, compliance audit, or fund allocation today?`,
       suggestedFollowups: [
@@ -74,7 +74,7 @@ How can I assist you with project scrutiny, compliance audit, or fund allocation
       const errMsg: ChatMessage = {
         id: `err-${Date.now()}`,
         sender: 'assistant',
-        text: 'An error occurred while communicating with the Sentinel intelligence engine. Please retry your query.',
+        text: 'An error occurred while communicating with the Team Drishti intelligence engine. Please retry your query.',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };
       setMessages((prev) => [...prev, errMsg]);
@@ -169,7 +169,7 @@ How can I assist you with project scrutiny, compliance audit, or fund allocation
             }}
           >
             <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-            AI Sentinel Grounded
+            Team Drishti AI Grounded
           </span>
         </div>
       </div>
@@ -205,7 +205,7 @@ How can I assist you with project scrutiny, compliance audit, or fund allocation
                   {/* Sender Header */}
                   <div className="flex items-center justify-between gap-3 text-[11px] font-mono border-b pb-1.5 opacity-80 border-slate-200 dark:border-slate-800">
                     <span className={`font-bold ${isBot ? 'text-[#FF671F]' : 'text-amber-400'}`}>
-                      {isBot ? 'MPLADS Sentinel AI' : 'You (Officer)'}
+                      {isBot ? 'Team Drishti AI' : 'You (Officer)'}
                     </span>
                     <span className={isBot ? 'text-slate-500 dark:text-slate-400' : 'text-slate-400'}>
                       {msg.timestamp}
@@ -291,7 +291,7 @@ How can I assist you with project scrutiny, compliance audit, or fund allocation
               </div>
               <div className="p-3.5 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-200 dark:border-slate-700 flex items-center gap-2.5 shadow-sm font-semibold text-slate-900 dark:text-slate-100">
                 <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-ping" />
-                <span>Sentinel AI analyzing telemetry database...</span>
+                <span>Team Drishti AI analyzing telemetry database...</span>
               </div>
             </div>
           )}

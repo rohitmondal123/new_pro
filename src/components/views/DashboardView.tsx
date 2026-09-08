@@ -11,10 +11,8 @@ import {
   Building2,
   Layers,
   ArrowRight,
-  Flame,
   FileCheck2,
   Activity,
-  Filter,
   BarChart2,
   ChevronRight,
 } from 'lucide-react';
@@ -59,127 +57,6 @@ export const DashboardView: React.FC = () => {
 
   return (
     <div className="space-y-6 pb-12">
-      {/* Top Banner / Hero Title */}
-      <div className="theme-surface p-5 rounded-2xl border theme-border shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4 relative overflow-hidden">
-        {/* Subtle Indian Flag Top Ribbon */}
-        <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#FF671F] via-white to-[#138808]" />
-
-        <div>
-          <div className="flex items-center gap-2">
-            <span
-              className="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border flex items-center gap-1.5"
-              style={{
-                backgroundColor: 'var(--app-pill-bg)',
-                color: 'var(--app-pill-text)',
-                borderColor: 'var(--app-pill-border)',
-              }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#138808]" />
-              National Command Center
-            </span>
-            <span className="text-xs text-slate-400 font-mono">
-              Live Nodal Feed • MoSPI Government Telemetry
-            </span>
-          </div>
-          <h1 className="text-2xl font-extrabold theme-text tracking-tight mt-1">
-            National Project & Fund Intelligence
-          </h1>
-          <p className="text-xs theme-text-secondary max-w-2xl">
-            Real-time monitoring across 52,480 community asset works. Detecting cost overruns,
-            payment spikes, and financial vs physical progress divergences.
-          </p>
-        </div>
-
-        {/* Global Filter Toolbar */}
-        <div className="flex flex-wrap items-center gap-2 text-xs">
-          <div className="flex items-center gap-1.5 theme-surface-subtle px-2.5 py-1.5 rounded-lg border theme-border">
-            <Filter className="w-3.5 h-3.5 text-slate-400" />
-            <span className="text-slate-500 font-medium">State:</span>
-            <select
-              value={selectedState}
-              onChange={(e) => setSelectedState(e.target.value)}
-              className="bg-transparent font-bold theme-text focus:outline-none cursor-pointer"
-            >
-              <option value="ALL">All States (National)</option>
-              <option value="West Bengal">West Bengal</option>
-              <option value="Uttar Pradesh">Uttar Pradesh</option>
-              <option value="Maharashtra">Maharashtra</option>
-              <option value="Bihar">Bihar</option>
-              <option value="Tamil Nadu">Tamil Nadu</option>
-              <option value="Rajasthan">Rajasthan</option>
-              <option value="Karnataka">Karnataka</option>
-              <option value="Kerala">Kerala</option>
-            </select>
-          </div>
-
-          <div className="flex items-center gap-1.5 theme-surface-subtle px-2.5 py-1.5 rounded-lg border theme-border">
-            <span className="text-slate-500 font-medium">Category:</span>
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="bg-transparent font-bold theme-text focus:outline-none cursor-pointer"
-            >
-              <option value="ALL">All Categories</option>
-              <option value="Community Hall">Community Halls</option>
-              <option value="Drinking Water">Drinking Water & RO</option>
-              <option value="Rural Roads">Rural Roads & Culverts</option>
-              <option value="School Infrastructure">School Infrastructure</option>
-              <option value="Sanitation">Sanitation & Health</option>
-            </select>
-          </div>
-
-          <button
-            onClick={() => setActiveRoute('queue')}
-            className="flex items-center gap-1.5 bg-rose-600 hover:bg-rose-700 text-white font-bold px-3 py-1.5 rounded-lg shadow-xs transition-colors cursor-pointer"
-          >
-            <AlertTriangle className="w-3.5 h-3.5" />
-            <span>Investigation Queue</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Signature Demo Showcase Callout (Hackathon Step 2-4 flow) */}
-      <div className="bg-linear-to-r from-rose-950 via-slate-900 to-blue-950 text-white p-5 rounded-2xl shadow-md border border-rose-900/60 relative overflow-hidden">
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-          <div className="space-y-1.5 max-w-3xl">
-            <div className="flex items-center gap-2">
-              <span className="bg-rose-500 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded tracking-wide uppercase flex items-center gap-1">
-                <Flame className="w-3 h-3 text-amber-300 animate-pulse" />
-                SIGNATURE DEMO CASE DETECTED
-              </span>
-              <span className="text-xs text-rose-300 font-mono">
-                Work ID: MPL-1024 • Bankura, West Bengal
-              </span>
-            </div>
-            <h2 className="text-lg font-extrabold text-white tracking-tight">
-              Multipurpose Community Hall & Skill Training Center
-            </h2>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Disbursement is <strong className="text-amber-300">92%</strong> while ground physical
-              progress is authenticated at only <strong className="text-rose-400">41%</strong>{' '}
-              (<strong className="text-rose-300">51% progress gap</strong>). Actual expenditure of{' '}
-              <strong className="text-amber-300">₹38.4L</strong> exceeds sanction of ₹21.0L (+82.8%).
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="text-right px-4 py-2 rounded-xl bg-white/10 backdrop-blur-xs border border-white/10">
-              <div className="text-[10px] font-mono uppercase text-slate-300">Composite Risk Score</div>
-              <div className="text-2xl font-black text-rose-400 font-mono">94 / 100</div>
-              <div className="text-[9px] font-bold text-rose-300 uppercase">CRITICAL PRIORITY</div>
-            </div>
-
-            <button
-              onClick={() => openProjectDetail('MPL-1024')}
-              className="px-4 py-3 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs shadow-lg flex items-center gap-2 transition-all hover:scale-102"
-            >
-              <span>Inspect Project Digital Twin</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      </div>
-
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
         <div className="p-3.5 rounded-xl theme-surface border theme-border shadow-xs">
@@ -231,8 +108,8 @@ export const DashboardView: React.FC = () => {
         </div>
       </div>
 
-      {/* Row 2: MPLADS Pulse Score & Reality Engine Teaser */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {/* Row 2: MPLADS Pulse Score & Investigation Queue */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* MPLADS Pulse Score (Signature Feature #10) */}
         <div className="theme-surface p-5 rounded-2xl border theme-border shadow-xs flex flex-col justify-between">
           <div className="flex items-center justify-between">
@@ -356,78 +233,6 @@ export const DashboardView: React.FC = () => {
             >
               <span>View Component Breakdown</span>
               <ChevronRight className="w-3 h-3" />
-            </button>
-          </div>
-        </div>
-
-        {/* Financial vs Physical Reality Engine Card (Signature Feature #12) */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between">
-          <div>
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs font-bold text-amber-700 uppercase tracking-wider">
-                  Signature Reality Engine
-                </div>
-                <h3 className="text-base font-extrabold text-slate-900">
-                  Financial vs Physical Reality
-                </h3>
-              </div>
-              <span className="text-xs bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded font-mono">
-                CRITICAL MISMATCH
-              </span>
-            </div>
-            <p className="text-xs text-slate-500 mt-1">
-              Statistical comparison identifying projects where funds disbursed significantly outpace
-              authenticated field completion.
-            </p>
-
-            <div className="mt-4 p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
-              <div className="flex items-center justify-between text-xs font-mono">
-                <span className="font-bold text-blue-900">CASE: MPL-1024</span>
-                <span className="text-rose-700 font-bold bg-rose-100 px-2 py-0.5 rounded">
-                  51% GAP
-                </span>
-              </div>
-
-              <div>
-                <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                  <span>FINANCIAL DISBURSED</span>
-                  <span className="font-mono text-blue-700">92%</span>
-                </div>
-                <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden">
-                  <div className="h-full bg-blue-700 rounded-full" style={{ width: '92%' }} />
-                </div>
-              </div>
-
-              <div>
-                <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
-                  <span>PHYSICAL COMPLETED</span>
-                  <span className="font-mono text-amber-700">41%</span>
-                </div>
-                <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden">
-                  <div className="h-full bg-amber-500 rounded-full" style={{ width: '41%' }} />
-                </div>
-              </div>
-
-              <div className="text-[11px] text-rose-900 font-medium bg-rose-50 p-2 rounded border border-rose-200">
-                ⚠ Statistical anomaly: Project is 3.8 standard deviations beyond peer group average.
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-            <button
-              onClick={() => openProjectDetail('MPL-1024')}
-              className="text-xs text-blue-700 hover:text-blue-900 font-bold"
-            >
-              Analyze MPL-1024
-            </button>
-            <button
-              onClick={() => setActiveRoute('reality')}
-              className="text-xs font-semibold text-slate-700 hover:text-slate-900 flex items-center gap-1"
-            >
-              <span>Explore Reality Engine</span>
-              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>

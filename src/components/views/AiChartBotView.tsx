@@ -879,7 +879,7 @@ Ask me in plain natural language to chart, plot, or compare any aspect of the MP
 
             <div className="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
               <span className="font-mono text-[11px]">
-                Exported from MPLADS Sentinel AI Chart Studio
+                Exported from Team Drishti AI Chart Studio
               </span>
               <div className="flex items-center gap-2">
                 <button
