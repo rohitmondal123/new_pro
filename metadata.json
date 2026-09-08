@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix MPLADS Sentinel",
+  "description": "AI-Powered MPLADS Monitoring \u0026 Predictive Risk Intelligence Platform",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

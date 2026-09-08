@@ -1,0 +1,636 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Lora", Georgia, Cambria, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Theme-reactive Slates */
+  --color-slate-50: var(--slate-50, #f8fafc);
+  --color-slate-100: var(--slate-100, #f1f5f9);
+  --color-slate-200: var(--slate-200, #e2e8f0);
+  --color-slate-300: var(--slate-300, #cbd5e1);
+  --color-slate-400: var(--slate-400, #94a3b8);
+  --color-slate-500: var(--slate-500, #64748b);
+  --color-slate-600: var(--slate-600, #475569);
+  --color-slate-700: var(--slate-700, #334155);
+  --color-slate-800: var(--slate-800, #1e293b);
+  --color-slate-900: var(--slate-900, #0f172a);
+  --color-slate-950: var(--slate-950, #020617);
+
+  /* Theme-reactive Blues / Primary Accents */
+  --color-blue-50: var(--blue-50, #eff6ff);
+  --color-blue-100: var(--blue-100, #dbeafe);
+  --color-blue-200: var(--blue-200, #bfdbfe);
+  --color-blue-300: var(--blue-300, #93c5fd);
+  --color-blue-400: var(--blue-400, #60a5fa);
+  --color-blue-500: var(--blue-500, #3b82f6);
+  --color-blue-600: var(--blue-600, #2563eb);
+  --color-blue-700: var(--blue-700, #1d4ed8);
+  --color-blue-800: var(--blue-800, #1e40af);
+  --color-blue-900: var(--blue-900, #1e3a8a);
+  --color-blue-950: var(--blue-950, #172554);
+
+  /* Ambers / Warnings */
+  --color-amber-50: var(--amber-50, #fffbeb);
+  --color-amber-100: var(--amber-100, #fef3c7);
+  --color-amber-200: var(--amber-200, #fde68a);
+  --color-amber-300: var(--amber-300, #fcd34d);
+  --color-amber-400: var(--amber-400, #fbbf24);
+  --color-amber-500: var(--amber-500, #f59e0b);
+  --color-amber-600: var(--amber-600, #d97706);
+  --color-amber-700: var(--amber-700, #b45309);
+  --color-amber-800: var(--amber-800, #92400e);
+  --color-amber-900: var(--amber-900, #78350f);
+
+  /* Roses / Critical Signals */
+  --color-rose-50: var(--rose-50, #fff1f2);
+  --color-rose-100: var(--rose-100, #ffe4e6);
+  --color-rose-200: var(--rose-200, #fecdd3);
+  --color-rose-300: var(--rose-300, #fda4af);
+  --color-rose-400: var(--rose-400, #fb7185);
+  --color-rose-500: var(--rose-500, #f43f5e);
+  --color-rose-600: var(--rose-600, #e11d48);
+  --color-rose-700: var(--rose-700, #be123c);
+  --color-rose-800: var(--rose-800, #9f1239);
+  --color-rose-900: var(--rose-900, #881337);
+
+  /* Emeralds / Success & Verifications */
+  --color-emerald-50: var(--emerald-50, #ecfdf5);
+  --color-emerald-100: var(--emerald-100, #d1fae5);
+  --color-emerald-200: var(--emerald-200, #a7f3d0);
+  --color-emerald-300: var(--emerald-300, #6ee7b7);
+  --color-emerald-400: var(--emerald-400, #34d399);
+  --color-emerald-500: var(--emerald-500, #10b981);
+  --color-emerald-600: var(--emerald-600, #059669);
+  --color-emerald-700: var(--emerald-700, #047857);
+  --color-emerald-800: var(--emerald-800, #065f46);
+  --color-emerald-900: var(--emerald-900, #064e3b);
+}
+
+/* ==========================================================================
+   CSS CUSTOM THEMES SPECIFICATION
+   ========================================================================== */
+
+:root, [data-theme="tiranga"], [data-theme="tricolor"] {
+  /* Indian National Flag Official Colors */
+  --flag-saffron: #FF671F;
+  --flag-white: #FFFFFF;
+  --flag-green: #138808;
+  --flag-navy: #000080;
+
+  /* Crisp Slate & Canvas Neutrals */
+  --slate-50: #FAFBFD;
+  --slate-100: #F3F5F8;
+  --slate-200: #E4E8EE;
+  --slate-300: #CBD3DE;
+  --slate-400: #94A1B2;
+  --slate-500: #647387;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1E293B;
+  --slate-900: #0F172A;
+  --slate-950: #020617;
+
+  /* Ashoka Navy Blue Scale */
+  --blue-50: #EFF6FF;
+  --blue-100: #DBEAFE;
+  --blue-200: #BFDBFE;
+  --blue-300: #93C5FD;
+  --blue-400: #60A5FA;
+  --blue-500: #2563EB;
+  --blue-600: #1D4ED8;
+  --blue-700: #1E40AF;
+  --blue-800: #1E3A8A;
+  --blue-900: #0A192F;
+  --blue-950: #000080;
+
+  /* Saffron Scale (Kesari) */
+  --amber-50: #FFF7ED;
+  --amber-500: #FF9933;
+  --amber-600: #FF671F;
+  --rose-50: #FFF1F2;
+  --rose-500: #EF4444;
+  --rose-600: #DC2626;
+
+  /* India Green Scale (Bharat Harit) */
+  --emerald-50: #F0FDF4;
+  --emerald-500: #16A34A;
+  --emerald-600: #138808;
+  --emerald-700: #0E6606;
+
+  /* App Structural Theme Tokens - Tiranga Indian Flag */
+  --app-bg: #FAFBFD;
+  --app-surface: #FFFFFF;
+  --app-surface-subtle: #F5F7FA;
+  --app-border: #E2E8F0;
+  --app-border-strong: #CBD5E1;
+  --app-text-primary: #0B192C;
+  --app-text-secondary: #475569;
+  --app-text-muted: #94A3B8;
+
+  /* Top Bar with Ashoka Navy & Saffron/Green Trimmings */
+  --app-topbar-bg: #071527;
+  --app-topbar-text: #F8FAFC;
+  --app-topbar-border: #152C47;
+  --app-topbar-badge-bg: rgba(255, 103, 31, 0.2);
+  --app-topbar-badge-text: #FED7AA;
+
+  /* Sidebar in Regal Ashoka Navy with Saffron Active State */
+  --app-sidebar-bg: #0B192C;
+  --app-sidebar-text: #94A3B8;
+  --app-sidebar-border: #18314F;
+  --app-sidebar-card-bg: rgba(24, 49, 79, 0.45);
+  --app-sidebar-hover-bg: #152A42;
+  --app-sidebar-active-bg: #FF671F;
+  --app-sidebar-active-text: #FFFFFF;
+  --app-sidebar-badge-bg: #18314F;
+  --app-sidebar-badge-text: #86EFAC;
+
+  /* Brand Accents - India Saffron & Green */
+  --app-brand-accent: #FF671F;
+  --app-brand-accent-hover: #EA580C;
+  --app-brand-accent-text: #FFFFFF;
+  --app-brand-logo-bg: #0B192C;
+  --app-brand-highlight: #FF671F;
+  --app-pill-bg: #FFF7ED;
+  --app-pill-text: #C2410C;
+  --app-pill-border: #FED7AA;
+
+  --selection-bg: #FF671F;
+  --selection-text: #FFFFFF;
+}
+
+/* THEME 2: Executive Navy & Slate */
+[data-theme="navy"] {
+  --slate-50: #F8FAFC;
+  --slate-100: #F1F5F9;
+  --slate-200: #E2E8F0;
+  --slate-300: #CBD5E1;
+  --slate-400: #94A3B8;
+  --slate-500: #64748B;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1E293B;
+  --slate-900: #0F172A;
+  --slate-950: #020617;
+
+  --blue-50: #EFF6FF;
+  --blue-100: #DBEAFE;
+  --blue-200: #BFDBFE;
+  --blue-300: #93C5FD;
+  --blue-400: #60A5FA;
+  --blue-500: #3B82F6;
+  --blue-600: #2563EB;
+  --blue-700: #1D4ED8;
+  --blue-800: #1E40AF;
+  --blue-900: #1E3A8A;
+  --blue-950: #172554;
+
+  --amber-50: #FFFBEB;
+  --amber-500: #F59E0B;
+  --amber-600: #D97706;
+  --rose-50: #FFF1F2;
+  --rose-500: #EF4444;
+  --rose-600: #DC2626;
+  --emerald-50: #ECFDF5;
+  --emerald-500: #10B981;
+  --emerald-600: #059669;
+
+  --app-bg: #F8FAFC;
+  --app-surface: #FFFFFF;
+  --app-surface-subtle: #F1F5F9;
+  --app-border: #E2E8F0;
+  --app-border-strong: #CBD5E1;
+  --app-text-primary: #0F172A;
+  --app-text-secondary: #475569;
+  --app-text-muted: #94A3B8;
+
+  --app-topbar-bg: #0A0F1D;
+  --app-topbar-text: #E2E8F0;
+  --app-topbar-border: #1E293B;
+  --app-topbar-badge-bg: rgba(37, 99, 235, 0.15);
+  --app-topbar-badge-text: #93C5FD;
+
+  --app-sidebar-bg: #0F172A;
+  --app-sidebar-text: #94A3B8;
+  --app-sidebar-border: #1E293B;
+  --app-sidebar-card-bg: rgba(30, 41, 59, 0.5);
+  --app-sidebar-hover-bg: #1E293B;
+  --app-sidebar-active-bg: #2563EB;
+  --app-sidebar-active-text: #FFFFFF;
+  --app-sidebar-badge-bg: #1E293B;
+  --app-sidebar-badge-text: #94A3B8;
+
+  --app-brand-accent: #2563EB;
+  --app-brand-accent-hover: #1D4ED8;
+  --app-brand-accent-text: #FFFFFF;
+  --app-brand-logo-bg: #0F172A;
+  --app-brand-highlight: #3B82F6;
+  --app-pill-bg: #EFF6FF;
+  --app-pill-text: #1D4ED8;
+  --app-pill-border: #BFDBFE;
+
+  --selection-bg: #2563EB;
+  --selection-text: #FFFFFF;
+}
+
+/* THEME 3: Civic Emerald & Forest */
+[data-theme="emerald"] {
+  --slate-50: #F8FAF9;
+  --slate-100: #F0FDF4;
+  --slate-200: #DCFCE7;
+  --slate-300: #BBF7D0;
+  --slate-400: #86EFAC;
+  --slate-500: #4B6F5B;
+  --slate-600: #335342;
+  --slate-700: #203A2D;
+  --slate-800: #14271E;
+  --slate-900: #091710;
+  --slate-950: #040D09;
+
+  --blue-50: #F0FDF4;
+  --blue-100: #DCFCE7;
+  --blue-200: #BBF7D0;
+  --blue-300: #86EFAC;
+  --blue-400: #4ADE80;
+  --blue-500: #22C55E;
+  --blue-600: #059669;
+  --blue-700: #047857;
+  --blue-800: #065F46;
+  --blue-900: #064E3B;
+
+  --app-bg: #F8FAF9;
+  --app-surface: #FFFFFF;
+  --app-surface-subtle: #F0FDF4;
+  --app-border: #E2E8F0;
+  --app-border-strong: #CBD5E1;
+  --app-text-primary: #064E3B;
+  --app-text-secondary: #335342;
+  --app-text-muted: #64748B;
+
+  --app-topbar-bg: #03231B;
+  --app-topbar-text: #D1FAE5;
+  --app-topbar-border: #064E3B;
+  --app-topbar-badge-bg: rgba(5, 150, 105, 0.2);
+  --app-topbar-badge-text: #A7F3D0;
+
+  --app-sidebar-bg: #064E3B;
+  --app-sidebar-text: #A7F3D0;
+  --app-sidebar-border: #047857;
+  --app-sidebar-card-bg: rgba(4, 120, 87, 0.35);
+  --app-sidebar-hover-bg: #047857;
+  --app-sidebar-active-bg: #059669;
+  --app-sidebar-active-text: #FFFFFF;
+  --app-sidebar-badge-bg: #032F24;
+  --app-sidebar-badge-text: #D1FAE5;
+
+  --app-brand-accent: #059669;
+  --app-brand-accent-hover: #047857;
+  --app-brand-accent-text: #FFFFFF;
+  --app-brand-logo-bg: #064E3B;
+  --app-brand-highlight: #10B981;
+  --app-pill-bg: #ECFDF5;
+  --app-pill-text: #065F46;
+  --app-pill-border: #A7F3D0;
+
+  --selection-bg: #059669;
+  --selection-text: #FFFFFF;
+}
+
+/* THEME 4: Royal Indigo & Slate */
+[data-theme="indigo"] {
+  --slate-50: #F8F9FE;
+  --slate-100: #EEF2FF;
+  --slate-200: #E0E7FF;
+  --slate-300: #C7D2FE;
+  --slate-400: #A5B4FC;
+  --slate-500: #6366F1;
+  --slate-600: #4F46E5;
+  --slate-700: #3730A3;
+  --slate-800: #312E81;
+  --slate-900: #1E1B4B;
+  --slate-950: #0F0E26;
+
+  --blue-50: #EEF2FF;
+  --blue-100: #E0E7FF;
+  --blue-200: #C7D2FE;
+  --blue-300: #A5B4FC;
+  --blue-400: #818CF8;
+  --blue-500: #6366F1;
+  --blue-600: #4F46E5;
+  --blue-700: #4338CA;
+  --blue-800: #3730A3;
+  --blue-900: #312E81;
+
+  --app-bg: #F8F9FE;
+  --app-surface: #FFFFFF;
+  --app-surface-subtle: #EEF2FF;
+  --app-border: #E0E7FF;
+  --app-border-strong: #C7D2FE;
+  --app-text-primary: #1E1B4B;
+  --app-text-secondary: #4338CA;
+  --app-text-muted: #818CF8;
+
+  --app-topbar-bg: #0F0E26;
+  --app-topbar-text: #E0E7FF;
+  --app-topbar-border: #312E81;
+  --app-topbar-badge-bg: rgba(79, 70, 229, 0.2);
+  --app-topbar-badge-text: #C7D2FE;
+
+  --app-sidebar-bg: #1E1B4B;
+  --app-sidebar-text: #C7D2FE;
+  --app-sidebar-border: #312E81;
+  --app-sidebar-card-bg: rgba(49, 46, 129, 0.4);
+  --app-sidebar-hover-bg: #312E81;
+  --app-sidebar-active-bg: #4F46E5;
+  --app-sidebar-active-text: #FFFFFF;
+  --app-sidebar-badge-bg: #312E81;
+  --app-sidebar-badge-text: #EEF2FF;
+
+  --app-brand-accent: #4F46E5;
+  --app-brand-accent-hover: #4338CA;
+  --app-brand-accent-text: #FFFFFF;
+  --app-brand-logo-bg: #1E1B4B;
+  --app-brand-highlight: #6366F1;
+  --app-pill-bg: #EEF2FF;
+  --app-pill-text: #3730A3;
+  --app-pill-border: #C7D2FE;
+
+  --selection-bg: #4F46E5;
+  --selection-text: #FFFFFF;
+}
+
+/* THEME 5: Obsidian Dark Command */
+[data-theme="dark"] {
+  --slate-50: #0B0F19;
+  --slate-100: #111827;
+  --slate-200: #1E293B;
+  --slate-300: #334155;
+  --slate-400: #64748B;
+  --slate-500: #94A3B8;
+  --slate-600: #CBD5E1;
+  --slate-700: #E2E8F0;
+  --slate-800: #F1F5F9;
+  --slate-900: #F8FAFC;
+  --slate-950: #FFFFFF;
+
+  --blue-50: #0F172A;
+  --blue-100: #1E293B;
+  --blue-200: #1E3A8A;
+  --blue-300: #1D4ED8;
+  --blue-400: #2563EB;
+  --blue-500: #3B82F6;
+  --blue-600: #38BDF8;
+  --blue-700: #0EA5E9;
+  --blue-800: #0284C7;
+  --blue-900: #BAE6FD;
+
+  --app-bg: #0B0F19;
+  --app-surface: #111827;
+  --app-surface-subtle: #1F2937;
+  --app-border: #1E293B;
+  --app-border-strong: #334155;
+  --app-text-primary: #F8FAFC;
+  --app-text-secondary: #94A3B8;
+  --app-text-muted: #64748B;
+
+  --app-topbar-bg: #050810;
+  --app-topbar-text: #94A3B8;
+  --app-topbar-border: #1E293B;
+  --app-topbar-badge-bg: rgba(56, 189, 248, 0.15);
+  --app-topbar-badge-text: #38BDF8;
+
+  --app-sidebar-bg: #0F172A;
+  --app-sidebar-text: #94A3B8;
+  --app-sidebar-border: #1E293B;
+  --app-sidebar-card-bg: rgba(30, 41, 59, 0.6);
+  --app-sidebar-hover-bg: #1E293B;
+  --app-sidebar-active-bg: #0284C7;
+  --app-sidebar-active-text: #FFFFFF;
+  --app-sidebar-badge-bg: #1E293B;
+  --app-sidebar-badge-text: #38BDF8;
+
+  --app-brand-accent: #0284C7;
+  --app-brand-accent-hover: #0369A1;
+  --app-brand-accent-text: #FFFFFF;
+  --app-brand-logo-bg: #1E293B;
+  --app-brand-highlight: #38BDF8;
+  --app-pill-bg: #1E293B;
+  --app-pill-text: #38BDF8;
+  --app-pill-border: #334155;
+
+  --selection-bg: #0284C7;
+  --selection-text: #FFFFFF;
+}
+
+/* THEME 6: Heritage Parchment & Olive */
+[data-theme="heritage"] {
+  --slate-50: #FAF8F4;
+  --slate-100: #F5F1E8;
+  --slate-200: #E8E3DA;
+  --slate-300: #D8D1C3;
+  --slate-400: #9E9789;
+  --slate-500: #6B705C;
+  --slate-600: #585E4D;
+  --slate-700: #424738;
+  --slate-800: #2F3624;
+  --slate-900: #283618;
+  --slate-950: #1B2610;
+
+  --blue-50: #F4F6EE;
+  --blue-100: #E9EDC9;
+  --blue-200: #CCD5AE;
+  --blue-300: #A3B18A;
+  --blue-400: #8A9A5B;
+  --blue-500: #6B7B42;
+  --blue-600: #606C38;
+  --blue-700: #465325;
+  --blue-800: #35401B;
+  --blue-900: #283618;
+  --blue-950: #1B2610;
+
+  --app-bg: #FDFBF7;
+  --app-surface: #FFFFFF;
+  --app-surface-subtle: #FAF8F3;
+  --app-border: #E8E3DA;
+  --app-border-strong: #D8D1C3;
+  --app-text-primary: #283618;
+  --app-text-secondary: #6B705C;
+  --app-text-muted: #9E9789;
+
+  --app-topbar-bg: #1A2612;
+  --app-topbar-text: #CCD5AE;
+  --app-topbar-border: #283618;
+  --app-topbar-badge-bg: rgba(188, 108, 37, 0.25);
+  --app-topbar-badge-text: #DDA15E;
+
+  --app-sidebar-bg: #1A2612;
+  --app-sidebar-text: #CCD5AE;
+  --app-sidebar-border: #2D3F1E;
+  --app-sidebar-card-bg: rgba(20, 30, 14, 0.4);
+  --app-sidebar-hover-bg: #283B1B;
+  --app-sidebar-active-bg: #606C38;
+  --app-sidebar-active-text: #FEFAE0;
+  --app-sidebar-badge-bg: #2D3F1E;
+  --app-sidebar-badge-text: #CCD5AE;
+
+  --app-brand-accent: #283618;
+  --app-brand-accent-hover: #384A22;
+  --app-brand-accent-text: #FEFAE0;
+  --app-brand-logo-bg: #283618;
+  --app-brand-highlight: #606C38;
+  --app-pill-bg: #E9EDC9;
+  --app-pill-text: #283618;
+  --app-pill-border: #CCD5AE;
+
+  --selection-bg: #606C38;
+  --selection-text: #FEFAE0;
+}
+
+/* ==========================================================================
+   GLOBAL UTILITIES AND BASE LAYOUT
+   ========================================================================== */
+
+@layer base {
+  body {
+    background-color: var(--app-bg);
+    color: var(--app-text-primary);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-text);
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.015em;
+  }
+
+  input, textarea, select {
+    color: var(--app-text-primary);
+  }
+}
+
+/* Reusable Theme Utility Classes */
+.theme-bg {
+  background-color: var(--app-bg);
+}
+
+.theme-surface {
+  background-color: var(--app-surface);
+}
+
+.theme-surface-subtle {
+  background-color: var(--app-surface-subtle);
+}
+
+.theme-border {
+  border-color: var(--app-border);
+}
+
+.theme-text {
+  color: var(--app-text-primary);
+}
+
+.theme-text-secondary {
+  color: var(--app-text-secondary);
+}
+
+.theme-text-muted {
+  color: var(--app-text-muted);
+}
+
+/* Highly legible, theme-reactive input utility */
+.theme-input {
+  background-color: var(--app-surface);
+  color: var(--app-text-primary);
+  border-color: var(--app-border-strong);
+}
+
+.theme-input::placeholder {
+  color: var(--app-text-muted);
+}
+
+/* Indian National Flag (Tiranga) Distinctive Styling Utilities */
+.tiranga-top-strip {
+  height: 3.5px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #FF671F 0%,
+    #FF671F 33.33%,
+    #FFFFFF 33.33%,
+    #FFFFFF 66.66%,
+    #138808 66.66%,
+    #138808 100%
+  );
+}
+
+.tiranga-smooth-strip {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #FF671F 0%,
+    #FFFFFF 50%,
+    #138808 100%
+  );
+}
+
+.tiranga-glow-saffron {
+  box-shadow: 0 0 15px rgba(255, 103, 31, 0.25);
+}
+
+.tiranga-glow-green {
+  box-shadow: 0 0 15px rgba(19, 136, 8, 0.25);
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float {
+  animation: float-subtle 3s ease-in-out infinite;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--slate-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--slate-300);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--slate-400);
+}
